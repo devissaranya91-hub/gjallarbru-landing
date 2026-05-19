@@ -7,16 +7,14 @@
     <title>Gjallarbrú | Sovereign AI & Data Infrastructure</title>
     <style>
         :root {
-            --bg-main: #0a0e14;
-            --bg-gradient: radial-gradient(circle at 50% 0%, #111827 0%, #0a0e14 70%);
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --accent-primary: #38bdf8; /* Cyber Blue */
-            --accent-secondary: #34d399; /* Security Emerald */
-            --text-primary: #f3f4f6;
+            --bg-main: #06090e;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #0f172a 0%, #06090e 80%);
+            --accent-blue: #38bdf8; 
+            --accent-emerald: #34d399; 
+            --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --card-bg: rgba(22, 27, 34, 0.7);
+            --card-bg: rgba(13, 17, 23, 0.75);
             --border-color: #21262d;
-            --border-hover: #30363d;
         }
 
         * {
@@ -26,42 +24,66 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-main);
             background-image: var(--bg-gradient);
-            color: var(--text-primary);
+            color: var(--text-main);
             line-height: 1.6;
-            padding: 24px;
+            padding: 20px;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Subtle cyber-grid pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 720px;
             margin: 0 auto;
-            padding-top: 60px;
+            padding-top: 50px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .badge {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: var(--accent-primary);
-            padding: 6px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent-blue);
+            padding: 6px 16px;
             border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            font-family: monospace;
+        }
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-blue);
         }
 
         .logo {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -0.04em;
             color: #ffffff;
@@ -69,112 +91,126 @@
         }
 
         .logo span {
-            color: var(--accent-primary);
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            color: var(--accent-blue);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
         }
 
         .tagline {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 620px;
+            max-width: 580px;
             margin: 0 auto;
             font-weight: 400;
         }
 
-        /* Highlight Section for Capabilities */
-        .section-title {
-            font-size: 0.85rem;
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px 0 24px 0;
+        }
+
+        .section-divider span {
+            font-family: monospace;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             color: var(--text-muted);
-            margin-bottom: 24px;
-            text-align: center;
             font-weight: 700;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            margin-bottom: 60px;
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
         }
 
-        @media (min-width: 640px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        /* Highlighted Stack Layout */
+        .stack-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
-        .card {
-            background: var(--card-bg);
+        .prime-section {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9) 0%, rgba(13, 17, 23, 0.8) 100%);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 28px;
-            backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
+            padding: 30px;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: transparent;
-            transition: background 0.3s ease;
-        }
+        /* Specific accent glows for different capabilities */
+        .prime-section.ai-tier { border-left: 4px solid var(--accent-blue); }
+        .prime-section.security-tier { border-left: 4px solid var(--accent-emerald); }
 
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--border-hover);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 1px 1px var(--accent-glow);
+        .tech-label {
+            font-family: monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: block;
         }
+        .ai-tier .tech-label { color: var(--accent-blue); }
+        .security-tier .tech-label { color: var(--accent-emerald); }
 
-        /* Top cards get a subtle primary glow accent, bottom cards get secondary */
-        .card:nth-child(1):hover::before, .card:nth-child(2):hover::before {
-            background: var(--accent-primary);
-        }
-        .card:nth-child(3):hover::before, .card:nth-child(4):hover::before {
-            background: var(--accent-secondary);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
+        .prime-section h3 {
+            font-size: 1.4rem;
             color: #ffffff;
             margin-bottom: 12px;
-            font-weight: 600;
             letter-spacing: -0.02em;
         }
 
-        .card p {
+        .sub-feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.06);
+        }
+
+        @media(min-width: 500px) {
+            .sub-feature-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .sub-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .sub-card h4 {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .sub-card p, .prime-section > p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         .contact-section {
-            background: linear-gradient(180deg, rgba(22, 27, 34, 0.4) 0%, rgba(22, 27, 34, 0.8) 100%);
+            background: linear-gradient(180deg, rgba(22, 27, 34, 0.4) 0%, rgba(13, 17, 23, 0.9) 100%);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 80px;
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            margin-bottom: 60px;
         }
 
         .contact-section h2 {
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: -0.03em;
-        }
-
-        .contact-section p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 32px;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
         }
 
         .form-group {
@@ -183,17 +219,18 @@
 
         label {
             display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 8px;
-            color: var(--text-primary);
+            color: var(--text-main);
+            font-family: monospace;
         }
 
         input, textarea {
             width: 100%;
-            background-color: rgba(10, 14, 20, 0.6);
+            background-color: rgba(6, 9, 14, 0.7);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 14px;
@@ -205,38 +242,36 @@
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
-            background-color: #0a0e14;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
         }
 
         button {
             width: 100%;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, #0284c7 100%);
-            color: #04080f;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #0284c7 100%);
+            color: #06090e;
             border: none;
             border-radius: 8px;
             padding: 16px;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
             transition: all 0.2s ease;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.25);
         }
 
         button:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(56, 189, 248, 0.35);
-            opacity: 0.95;
+            box-shadow: 0 6px 24px rgba(56, 189, 248, 0.3);
         }
 
         footer {
             text-align: center;
-            padding: 32px 0;
+            padding: 30px 0;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
+            font-size: 0.8rem;
+            font-family: monospace;
         }
     </style>
 </head>
@@ -244,36 +279,46 @@
 
     <div class="container">
         <header>
-            <div class="badge">Sovereign Infrastructure</div>
+            <div class="badge">Sovereign Deployment Active</div>
             <div class="logo">Gjallarbrú<span>.</span></div>
             <p class="tagline">Bridging advanced machine learning with uncompromised sovereign data infrastructure.</p>
         </header>
 
         <main>
-            <div class="section-title">Core Capabilities</div>
+            <div class="section-divider">
+                <span>Core Architectural Focus</span>
+            </div>
             
-            <div class="grid">
-                <div class="card">
-                    <h3>Sovereign AI Architecture</h3>
-                    <p>Purpose-built execution stacks utilizing localized, regional LLM frameworks ensuring data residency and absolute privacy.</p>
+            <div class="stack-wrapper">
+                <div class="prime-section ai-tier">
+                    <span class="tech-label">Layer 01 // Secure Intelligence</span>
+                    <h3>Sovereign AI & Edge Integration</h3>
+                    <p>We engineer purpose-built execution stacks utilizing localized, regional LLM frameworks to ensure data residency and absolute privacy. By optimizing these topologies directly onto high-performance hardware, we deliver line-rate inference completely isolated from third-party cloud dependencies.</p>
+                    
+                    <div class="sub-feature-grid">
+                        <div class="sub-card">
+                            <h4>Local Frameworks</h4>
+                            <p>Custom fine-tuning and localized pipeline integration matching precise regional domain needs.</p>
+                        </div>
+                        <div class="sub-card">
+                            <h4>Hardware Topology</h4>
+                            <p>High-efficiency compute mapping optimized for autonomous edge hardware execution clusters.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Edge Intelligence</h3>
-                    <p>Optimized deployment topologies on high-performance hardware for line-rate inference without third-party cloud dependencies.</p>
-                </div>
-                <div class="card">
-                    <h3>Enterprise Security</h3>
-                    <p>Built with a rigorous cybersecurity and digital forensics foundation to protect critical workloads against modern threat vectors.</p>
-                </div>
-                <div class="card">
-                    <h3>Custom LLM Integration</h3>
-                    <p>Tailored fine-tuning and pipeline integration to align specialized model behaviors with localized domain requirements.</p>
+
+                <div class="prime-section security-tier">
+                    <span class="tech-label">Layer 02 // Threat Mitigation</span>
+                    <h3>Enterprise Security & Digital Forensics</h3>
+                    <p>Autonomous intelligence is only as reliable as the infrastructure beneath it. Our deployment paradigms are built from the ground up with a rigorous cybersecurity and digital forensics foundation, insulating critical enterprise workloads from modern multi-vector threats.</p>
                 </div>
             </div>
 
             <section class="contact-section">
                 <h2>Connect With Us</h2>
-                <p>Explore secure, autonomous AI integration for your organization. Drop your details below to schedule a consultation.</p>
+                <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+                    Explore secure, autonomous AI integration for your organization. Drop your details below to schedule a technical consultation.
+                </p>
                 
                 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
                     <div class="form-group">
