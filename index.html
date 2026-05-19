@@ -200,7 +200,7 @@
             font-size: 0.95rem;
         }
 
-        /* FIXED HARDWARE SPEC GRID WITH OVERFLOW PROTECTION */
+        /* RE-ENGINEERED PANEL GRID FOR HYBRID WORD WRAPPING */
         .spec-panel {
             background: rgba(6, 9, 14, 0.85);
             border: 1px solid rgba(56, 189, 248, 0.15);
@@ -208,12 +208,11 @@
             padding: 14px;
             margin: 24px 0;
             font-family: monospace;
-            overflow: hidden;
         }
 
         .spec-header {
-            display: grid;
-            grid-template-columns: 1fr auto;
+            display: flex;
+            justify-content: space-between;
             color: var(--accent-blue);
             border-bottom: 1px solid rgba(56, 189, 248, 0.15);
             padding-bottom: 8px;
@@ -224,14 +223,15 @@
             font-size: 0.72rem;
         }
 
+        /* Responsive flex layouts replace hard-coded tracking widths on mobile */
         .spec-row {
-            display: grid;
-            grid-template-columns: 95px 1fr;
-            gap: 10px;
-            padding: 8px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            font-size: 0.7rem;
-            align-items: center;
+            font-size: 0.72rem;
         }
 
         .spec-row:last-child {
@@ -240,21 +240,30 @@
 
         .spec-label {
             color: var(--text-muted);
-            white-space: nowrap;
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
         }
 
         .spec-value {
             color: #ffffff;
-            text-align: right;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            text-align: left;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.4;
         }
 
-        @media(min-width: 400px) {
+        /* Adapts cleanly on tablets and desktop monitors */
+        @media(min-width: 450px) {
             .spec-row {
-                grid-template-columns: 110px 1fr;
-                font-size: 0.72rem;
+                display: grid;
+                grid-template-columns: 140px 1fr;
+                gap: 12px;
+                align-items: center;
+            }
+            
+            .spec-value {
+                text-align: right;
             }
         }
 
@@ -357,20 +366,20 @@
                     
                     <div class="spec-panel">
                         <div class="spec-header">
-                            <span>Target Deployment Topology</span>
+                            <span>Target Deployment Status</span>
                             <span>Active</span>
                         </div>
                         <div class="spec-row">
-                            <span class="spec-label">Core LLM</span>
-                            <span class="spec-value" title="Regional / SEA-LION Alignments">Regional / SEA-LION Alignments</span>
+                            <span class="spec-label">Core LLM Framework</span>
+                            <span class="spec-value">Regional / SEA-LION Multi-Lingual Calibration</span>
                         </div>
                         <div class="spec-row">
-                            <span class="spec-label">Hardware</span>
-                            <span class="spec-value" title="NVIDIA Jetson Orin NX Clusters">NVIDIA Jetson Orin NX Clusters</span>
+                            <span class="spec-label">Hardware Acceleration</span>
+                            <span class="spec-value">Localized NVIDIA Jetson Orin NX Clusters</span>
                         </div>
                         <div class="spec-row">
-                            <span class="spec-label">Data Isolation</span>
-                            <span class="spec-value" title="Air-Gapped Local Inference Engine">Air-Gapped Local Inference Engine</span>
+                            <span class="spec-label">Data Isolation Matrix</span>
+                            <span class="spec-value">Air-Gapped Local Inference Engine (Zero Cloud Leak)</span>
                         </div>
                     </div>
 
