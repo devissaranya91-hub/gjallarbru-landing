@@ -194,15 +194,15 @@
             font-size: 0.95rem;
         }
 
-        /* Tech Spec Panel Styling */
+        /* Responsive Tech Spec Panel Styling */
         .spec-panel {
             background: rgba(6, 9, 14, 0.8);
             border: 1px solid rgba(56, 189, 248, 0.15);
             border-radius: 8px;
-            padding: 16px;
+            padding: 14px;
             margin: 20px 0;
             font-family: monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Marginally smaller for better data density on mobile */
         }
 
         .spec-header {
@@ -219,9 +219,19 @@
 
         .spec-row {
             display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
+            flex-direction: column; /* Stacks cleanly on mobile down below */
+            gap: 2px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        @media(min-width: 480px) {
+            .spec-row {
+                flex-direction: row; /* Snaps back to split columns on standard displays */
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
 
         .spec-row:last-child {
@@ -230,11 +240,19 @@
 
         .spec-label {
             color: var(--text-muted);
+            font-weight: 500;
+            min-width: 140px;
+            flex-shrink: 0;
         }
 
         .spec-value {
             color: #ffffff;
-            text-align: right;
+        }
+        
+        @media(min-width: 480px) {
+            .spec-value {
+                text-align: right;
+            }
         }
 
         .contact-section {
