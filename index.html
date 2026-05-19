@@ -200,7 +200,7 @@
             font-size: 0.95rem;
         }
 
-        /* HARDWARE SPEC GRID WITH SWIPE SCROLL SECURITY */
+        /* HARDWARE SPEC GRID WITH OVERFLOW PROTECTION */
         .spec-panel {
             background: rgba(6, 9, 14, 0.85);
             border: 1px solid rgba(56, 189, 248, 0.15);
@@ -225,9 +225,9 @@
 
         .spec-row {
             display: grid;
-            grid-template-columns: 105px 1fr; /* Rigid label space to protect layout */
-            gap: 12px;
-            padding: 10px 0;
+            grid-template-columns: 100px 1fr; /* Rigid label split prevents metrics crushing */
+            gap: 16px;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
             font-size: 0.72rem;
             align-items: center;
@@ -242,23 +242,24 @@
             white-space: nowrap;
         }
 
-        /* HORIZONTAL INTERACTIVE ELEMENT PIPELINE */
+        /* LEFT-ANCHORED HARDWARE HORIZONTAL TELEMETRY SWIPE */
         .spec-value {
             color: #ffffff;
-            text-align: right;
+            text-align: left;
             white-space: nowrap;
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            display: block;
         }
 
-        /* Custom minimal scrollbar to keep layout premium */
+        /* Cyberpunk styling cues for the native panel scroll tracking elements */
         .spec-value::-webkit-scrollbar {
             height: 2px;
         }
         .spec-value::-webkit-scrollbar-thumb {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.3);
             border-radius: 2px;
         }
 
@@ -428,3 +429,5 @@
 
 </body>
 </html>
+
+            
