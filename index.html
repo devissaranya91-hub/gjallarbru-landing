@@ -200,7 +200,7 @@
             font-size: 0.95rem;
         }
 
-        /* HARDWARE SPEC GRID WITH OVERFLOW PROTECTION */
+        /* SPECIFICATION PANEL BASE CONTAINER */
         .spec-panel {
             background: rgba(6, 9, 14, 0.85);
             border: 1px solid rgba(56, 189, 248, 0.15);
@@ -223,44 +223,50 @@
             font-size: 0.72rem;
         }
 
+        /* SEVERE OVERRIDE RESET FOR THE SPLIT GRID MESH */
         .spec-row {
-            display: grid;
-            grid-template-columns: 100px 1fr; /* Rigid label split prevents metrics crushing */
-            gap: 16px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            font-size: 0.72rem;
-            align-items: center;
+            display: grid !important;
+            grid-template-columns: 100px 1fr !important;
+            gap: 16px !important;
+            padding: 12px 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02) !important;
+            font-size: 0.72rem !important;
+            align-items: center !important;
         }
 
         .spec-row:last-child {
-            border-bottom: none;
+            border-bottom: none !important;
         }
 
         .spec-label {
-            color: var(--text-muted);
-            white-space: nowrap;
+            color: var(--text-muted) !important;
+            white-space: nowrap !important;
         }
 
-        /* LEFT-ANCHORED HARDWARE HORIZONTAL TELEMETRY SWIPE */
+        /* FORCE CRUSH ALL OVERFLOW HIDDEN/ELLIPSIS PROPERTIES RULES */
         .spec-value {
-            color: #ffffff;
-            text-align: left;
-            white-space: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 4px;
-            display: block;
+            color: #ffffff !important;
+            text-align: left !important;
+            white-space: nowrap !important;
+            
+            /* Enable scrolling mechanisms explicitly */
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            text-overflow: clip !important; /* Blows up any '...' truncation configurations */
+            
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 4px !important;
+            display: block !important;
         }
 
-        /* Cyberpunk styling cues for the native panel scroll tracking elements */
+        /* High-contrast custom scrollbar line track metrics */
         .spec-value::-webkit-scrollbar {
-            height: 2px;
+            height: 2px !important;
+            display: block !important;
         }
         .spec-value::-webkit-scrollbar-thumb {
-            background: rgba(56, 189, 248, 0.3);
-            border-radius: 2px;
+            background: rgba(56, 189, 248, 0.4) !important;
+            border-radius: 2px !important;
         }
 
         .contact-section {
@@ -367,15 +373,15 @@
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Core LLM</span>
-                            <span class="spec-value">Regional / SEA-LION Alignments</span>
+                            <span class="spec-value" style="overflow-x: auto !important; text-overflow: clip !important; white-space: nowrap !important;">Regional / SEA-LION Alignments</span>
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Hardware</span>
-                            <span class="spec-value">NVIDIA Jetson Orin NX Clusters</span>
+                            <span class="spec-value" style="overflow-x: auto !important; text-overflow: clip !important; white-space: nowrap !important;">NVIDIA Jetson Orin NX Clusters</span>
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Data Isolation</span>
-                            <span class="spec-value">Air-Gapped Local Inference Engine</span>
+                            <span class="spec-value" style="overflow-x: auto !important; text-overflow: clip !important; white-space: nowrap !important;">Air-Gapped Local Inference Engine</span>
                         </div>
                     </div>
 
@@ -429,5 +435,3 @@
 
 </body>
 </html>
-
-            
