@@ -194,15 +194,14 @@
             font-size: 0.95rem;
         }
 
-        /* Responsive Tech Spec Panel Styling */
+        /* Highly Optimized Compact Spec Panel */
         .spec-panel {
-            background: rgba(6, 9, 14, 0.8);
+            background: rgba(6, 9, 14, 0.85);
             border: 1px solid rgba(56, 189, 248, 0.15);
             border-radius: 8px;
-            padding: 14px;
+            padding: 12px 14px;
             margin: 20px 0;
             font-family: monospace;
-            font-size: 0.75rem; /* Marginally smaller for better data density on mobile */
         }
 
         .spec-header {
@@ -211,27 +210,21 @@
             color: var(--accent-blue);
             border-bottom: 1px solid rgba(56, 189, 248, 0.15);
             padding-bottom: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            font-size: 0.7rem;
         }
 
         .spec-row {
             display: flex;
-            flex-direction: column; /* Stacks cleanly on mobile down below */
-            gap: 2px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        @media(min-width: 480px) {
-            .spec-row {
-                flex-direction: row; /* Snaps back to split columns on standard displays */
-                justify-content: space-between;
-                align-items: flex-start;
-                gap: 15px;
-            }
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            font-size: 0.72rem; /* Clean and dense desktop/mobile sizing */
         }
 
         .spec-row:last-child {
@@ -240,19 +233,13 @@
 
         .spec-label {
             color: var(--text-muted);
-            font-weight: 500;
-            min-width: 140px;
             flex-shrink: 0;
         }
 
         .spec-value {
             color: #ffffff;
-        }
-        
-        @media(min-width: 480px) {
-            .spec-value {
-                text-align: right;
-            }
+            text-align: right;
+            word-break: break-word; /* Soft protection against rigid long strings */
         }
 
         .contact-section {
@@ -359,15 +346,15 @@
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Core LLM Framework</span>
-                            <span class="spec-value">Regional / SEA-LION Multi-Lingual Calibration</span>
+                            <span class="spec-value">Regional / SEA-LION Alignments</span>
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Hardware Acceleration</span>
-                            <span class="spec-value">Localized NVIDIA Jetson Orin NX Clusters</span>
+                            <span class="spec-value">NVIDIA Jetson Orin NX Clusters</span>
                         </div>
                         <div class="spec-row">
                             <span class="spec-label">Data Isolation Matrix</span>
-                            <span class="spec-value">Air-Gapped Local Inference Engine (Zero Cloud Leak)</span>
+                            <span class="spec-value">Air-Gapped Inference Engine</span>
                         </div>
                     </div>
 
