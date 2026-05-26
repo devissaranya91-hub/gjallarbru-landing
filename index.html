@@ -36,13 +36,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Subtle technical grid to eliminate the dull solid black void */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(200, 169, 107, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(200, 169, 107, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(200, 169, 107, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(200, 169, 107, 0.02) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
             pointer-events: none;
@@ -93,7 +92,7 @@
         .sub-tagline {
             font-size: 0.95rem;
             color: var(--text-muted);
-            margin: 6px auto 20px auto;
+            margin: 6px auto 24px auto;
         }
 
         .hero-actions {
@@ -121,11 +120,10 @@
             font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
-            transition: opacity 0.2s;
             text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
-
-        .btn-primary:hover { opacity: 0.9; }
 
         .btn-secondary {
             background: transparent;
@@ -136,18 +134,16 @@
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent-teal);
-            color: var(--accent-teal);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
         .section-divider {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin: 48px 0 16px 0;
+            margin: 44px 0 16px 0;
         }
 
         .section-divider span {
@@ -166,9 +162,8 @@
             background: linear-gradient(90deg, rgba(200, 169, 107, 0.2), transparent);
         }
 
-        /* Clean content rows replacing long paragraph card blocks */
         .content-row {
-            padding: 4px 0 12px 0;
+            padding: 4px 0 8px 0;
         }
 
         .content-row h3 {
@@ -184,73 +179,36 @@
             line-height: 1.5;
         }
 
-        .content-row strong {
-            color: #ffffff;
-        }
-
-        /* INTERACTIVE PIPELINE LAYOUT */
-        .pipeline-container {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
+        /* HARDWARE STABLE STATIC PIPELINE GRID */
+        .pipeline-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin-top: 8px;
         }
 
-        .pipeline-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        @media(min-width: 560px) {
-            .pipeline-grid {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
-
-        .pipeline-btn {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 8px 4px;
+        .pipeline-row-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-left: 3px solid var(--accent-teal);
             border-radius: 4px;
-            text-align: center;
-            font-family: monospace;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
+            padding: 14px;
         }
 
-        .pipeline-btn.active, .pipeline-btn:hover {
-            border-color: var(--accent-teal);
-            color: #ffffff;
-            background: rgba(20, 184, 166, 0.1);
-        }
-
-        .pipeline-display {
-            background: rgba(0, 0, 0, 0.2);
-            border-left: 2px solid var(--accent-teal);
-            padding: 12px;
-            border-radius: 0 4px 4px 0;
-            min-height: 64px;
-        }
-
-        .pipeline-display strong {
+        .pipeline-row-item strong {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: #ffffff;
+            font-family: monospace;
             margin-bottom: 2px;
         }
 
-        .pipeline-display p {
+        .pipeline-row-item p {
             font-size: 0.85rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
 
-        /* GRID ARCHITECTURE */
         .grid-two {
             display: grid;
             grid-template-columns: 1fr;
@@ -282,7 +240,6 @@
             line-height: 1.4;
         }
 
-        /* PILOT ACCESS FORM */
         .form-container {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -367,8 +324,8 @@
             <p class="sub-tagline">Enable clinics to utilize large language models without exposing sensitive patient records.</p>
             
             <div class="hero-actions">
-                <button class="btn-primary" onclick="document.getElementById('briefing-target').scrollIntoView({behavior: 'smooth'});">Request Pilot Discussion</button>
-                <button class="btn-secondary" onclick="document.getElementById('workflow-target').scrollIntoView({behavior: 'smooth'});">Explore Secure Workflows</button>
+                <a href="#briefing-target" class="btn-primary">Request Pilot Discussion</a>
+                <a href="#workflow-target" class="btn-secondary">Explore Secure Workflows</a>
             </div>
         </header>
 
@@ -387,19 +344,30 @@
             </section>
 
             <div class="section-divider" id="workflow-target"><span>Data Pipeline</span></div>
-            <section class="pipeline-container">
-                <div class="pipeline-grid">
-                    <div class="pipeline-btn active" onclick="updatePipeline(0)">01. Check-In</div>
-                    <div class="pipeline-btn" onclick="updatePipeline(1)">02. Redact</div>
-                    <div class="pipeline-btn" onclick="updatePipeline(2)">03. Tokenize</div>
-                    <div class="pipeline-btn" onclick="updatePipeline(3)">04. Access</div>
-                    <div class="pipeline-btn" onclick="updatePipeline(4)">05. Audit</div>
-                    <div class="pipeline-btn" onclick="updatePipeline(5)">06. Close</div>
+            <section class="pipeline-stack">
+                <div class="pipeline-row-item">
+                    <strong>01. Check-In</strong>
+                    <p>Incoming medical queries or transcribed documentation entries hit the localized pipeline wrapper securely.</p>
                 </div>
-                
-                <div class="pipeline-display" id="pipeline-panel">
-                    <strong id="pipe-title">01. Check-In</strong>
-                    <p id="pipe-desc">Incoming medical queries or transcribed documentation entries hit the localized pipeline wrapper securely.</p>
+                <div class="pipeline-row-item">
+                    <strong>02. Redaction</strong>
+                    <p>The processing core automatically masks identities, phone details, and sensitive metrics to satisfy PDPA baselines.</p>
+                </div>
+                <div class="pipeline-row-item">
+                    <strong>03. Tokenization</strong>
+                    <p>Identified private parameters turn into non-reversible, volatile proxy keys within memory stacks.</p>
+                </div>
+                <div class="pipeline-row-item">
+                    <strong>04. Managed Transmission</strong>
+                    <p>Sanitized data context targets the model endpoint via isolated outbound channels safely.</p>
+                </div>
+                <div class="pipeline-row-item">
+                    <strong>05. Cryptographic Logging</strong>
+                    <p>An internal, immutable trail preserves pipeline lifecycle operations for verification compliance reports.</p>
+                </div>
+                <div class="pipeline-row-item">
+                    <strong>06. Session Severance</strong>
+                    <p>The pipe clears ephemeral context files completely, closing connections with zero local cache retention.</p>
                 </div>
             </section>
 
@@ -411,7 +379,7 @@
                 </div>
                 <div class="mini-card">
                     <h4>Universal Model Routing</h4>
-                    <p>Integrates natively with regional frameworks like SEA-LION or private enterprise endpoints.</p>
+                    <p>Integrates natively with regional frameworks or private enterprise endpoints.</p>
                 </div>
             </section>
 
@@ -452,26 +420,5 @@
         </footer>
     </div>
 
-    <script>
-        const steps = [
-            {title: "01. Check-In", desc: "Incoming medical queries or transcribed documentation entries hit the localized pipeline wrapper securely."},
-            {title: "02. Redaction", desc: "The processing core automatically masks identities, phone details, and sensitive metrics to satisfy PDPA baselines."},
-            {title: "03. Tokenization", desc: "Identified private parameters turn into non-reversible, volatile proxy keys within memory stacks."},
-            {title: "04. Managed Transmission", desc: "Sanitized data context targets the model endpoint via isolated outbound channels safely."},
-            {title: "05. Cryptographic Logging", desc: "An internal, immutable trail preserves pipeline lifecycle operations for verification compliance reports."},
-            {title: "06. Session Severance", desc: "The pipe clears ephemeral context files completely, closing connections with zero local cache retention."}
-        ];
-
-        function updatePipeline(index) {
-            document.getElementById('pipe-title').innerText = steps[index].title;
-            document.getElementById('pipe-desc').innerText = steps[index].desc;
-            
-            const btns = document.querySelectorAll('.pipeline-btn');
-            btns.forEach((btn, idx) => {
-                if(idx === index) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-        }
-    </script>
 </body>
 </html>
