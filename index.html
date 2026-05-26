@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GJALLARBRÚ | Trust Layer for Healthcare AI</title>
+    <title>GJALLARBRÚ | The Trust Layer for Healthcare AI</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Technical subtle background coordinates */
         body::before {
             content: '';
             position: fixed;
@@ -48,7 +49,7 @@
         }
 
         .container {
-            max-width: 700px;
+            max-width: 680px;
             margin: 0 auto;
             padding-top: 24px;
         }
@@ -179,7 +180,10 @@
             line-height: 1.5;
         }
 
-        /* HARDWARE STABLE STATIC PIPELINE GRID */
+        .content-row strong {
+            color: #ffffff;
+        }
+
         .pipeline-stack {
             display: flex;
             flex-direction: column;
@@ -251,13 +255,7 @@
         .form-container h3 {
             font-size: 1.15rem;
             color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .form-container p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .field-group {
@@ -318,13 +316,13 @@
 
     <div class="container">
         <header>
-            <div class="badge">Sovereign Deployment Active</div>
-            <div class="logo">Gjallarbrú</div>
+            <div class="badge">System Deployment Matrix</div>
+            <div class="logo">GJALLARBRÚ</div>
             <p class="tagline">The Trust Layer for Healthcare AI.</p>
-            <p class="sub-tagline">Enable clinics to utilize large language models without exposing sensitive patient records.</p>
+            <p class="sub-tagline">Enable clinics to use AI without exposing patient data.</p>
             
             <div class="hero-actions">
-                <a href="#briefing-target" class="btn-primary">Request Pilot Discussion</a>
+                <a href="#contact-target" class="btn-primary">Request Pilot Discussion</a>
                 <a href="#workflow-target" class="btn-secondary">Explore Secure Workflows</a>
             </div>
         </header>
@@ -333,89 +331,93 @@
             
             <div class="section-divider"><span>The Problem</span></div>
             <section class="content-row">
-                <h3>Clinical data exposure risks regulatory non-compliance.</h3>
-                <p>When staff utilize standard AI platforms to process medical logs or case summaries, private histories cross institutional perimeters over the open web. Passing unshielded patient notes to external servers risks severe data leaks and breaches regional <strong>Personal Data Protection Act (PDPA)</strong> frameworks.</p>
+                <h3>Healthcare workflows expose too much sensitive data.</h3>
+                <p>When clinical teams use AI to draft notes, summarize cases, or analyze reports, sensitive patient information may be sent outside the clinic environment.<br><br>
+                This creates privacy, governance, and PDPA compliance concerns. Clinics want to adopt AI, but they need a safer way to protect patient identity before data reaches external tools.</p>
             </section>
 
             <div class="section-divider"><span>The Solution</span></div>
             <section class="content-row">
-                <h3>Interception and structural data shielding.</h3>
-                <p><strong>Gjallarbrú</strong> intercepts traffic before it exits the local server environment. By scrubbing personal metadata and applying dynamic text masking in real time, the platform feeds AI backends minimum clean context—protecting privacy records and keeping data boundaries strict and fully compliant.</p>
+                <h3>Secure AI workflows in real time.</h3>
+                <p><strong>Gjallarbrú</strong> acts as a trust layer between clinic workflows and AI systems.<br><br>
+                Before data is sent to an AI model, Gjallarbrú detects sensitive fields, redacts patient identifiers, replaces identity with secure tokens, and records the session activity. The AI receives only the minimum clinical context needed &mdash; not unnecessary patient identity. This structure supports PDPA-aligned workflows.</p>
             </section>
 
-            <div class="section-divider" id="workflow-target"><span>Data Pipeline</span></div>
+            <div class="section-divider" id="workflow-target"><span>The Workflow</span></div>
             <section class="pipeline-stack">
                 <div class="pipeline-row-item">
                     <strong>01. Check-In</strong>
-                    <p>Incoming medical queries or transcribed documentation entries hit the localized pipeline wrapper securely.</p>
+                    <p>Clinical text or requests enter the secure pipeline.</p>
                 </div>
                 <div class="pipeline-row-item">
                     <strong>02. Redaction</strong>
-                    <p>The processing core automatically masks identities, phone details, and sensitive metrics to satisfy PDPA baselines.</p>
+                    <p>Names, IDs, contact details, and sensitive identifiers are masked.</p>
                 </div>
                 <div class="pipeline-row-item">
                     <strong>03. Tokenization</strong>
-                    <p>Identified private parameters turn into non-reversible, volatile proxy keys within memory stacks.</p>
+                    <p>Patient identity is replaced with temporary secure tokens.</p>
                 </div>
                 <div class="pipeline-row-item">
-                    <strong>04. Managed Transmission</strong>
-                    <p>Sanitized data context targets the model endpoint via isolated outbound channels safely.</p>
+                    <strong>04. Secure Routing</strong>
+                    <p>Cleaned clinical context is routed to approved AI systems.</p>
                 </div>
                 <div class="pipeline-row-item">
-                    <strong>05. Cryptographic Logging</strong>
-                    <p>An internal, immutable trail preserves pipeline lifecycle operations for verification compliance reports.</p>
+                    <strong>05. Audit Trail</strong>
+                    <p>Each action is logged for review and accountability.</p>
                 </div>
                 <div class="pipeline-row-item">
-                    <strong>06. Session Severance</strong>
-                    <p>The pipe clears ephemeral context files completely, closing connections with zero local cache retention.</p>
+                    <strong>06. Session Close</strong>
+                    <p>Temporary session data is cleared based on policy.</p>
                 </div>
             </section>
 
-            <div class="section-divider"><span>Deployment Architecture</span></div>
+            <div class="section-divider"><span>The Architecture</span></div>
+            <section class="content-row" style="margin-bottom: 12px;">
+                <h3>Runs anywhere. Works with any model.</h3>
+            </section>
             <section class="grid-two">
                 <div class="mini-card">
-                    <h4>Local Air-Gapped Topology</h4>
-                    <p>Deploys directly onto localized clusters to enforce absolute hardware data residency.</p>
+                    <h4>Deployment Flexibility</h4>
+                    <p>Designed for cloud, hybrid, local/on-prem, or edge deployment depending on clinic requirements.</p>
                 </div>
                 <div class="mini-card">
-                    <h4>Universal Model Routing</h4>
-                    <p>Integrates natively with regional frameworks or private enterprise endpoints.</p>
+                    <h4>Model Agnostic</h4>
+                    <p>Allows clinics to work with approved AI models or private endpoints without being locked into one provider.</p>
                 </div>
             </section>
 
-            <div class="section-divider"><span>Engineering Foundation</span></div>
+            <div class="section-divider"><span>The Founder</span></div>
             <section class="content-row">
-                <h3>Built from enterprise security background.</h3>
-                <p>Gjallarbrú is engineered with rigorous cybersecurity and digital forensics fundamentals to shield critical operations from multi-vector exposure vectors while making tactical AI adoption safe.</p>
+                <h3>Built from real-world security experience.</h3>
+                <p>Gjallarbrú was founded by a security operations and cybersecurity professional to address the gap between highly sensitive system workflows and modern AI integration. The platform was designed to reduce unnecessary data exposure while enabling practical AI adoption in regulated clinical environments.</p>
             </section>
 
-            <div class="section-divider" id="briefing-target"><span>Institutional Alignment</span></div>
+            <div class="section-divider" id="contact-target"><span>Contact</span></div>
             <section class="form-container">
-                <h3>Request Pilot Discussion</h3>
-                <p>Coordinate architectural assessments, hardware mapping options, or structural compliance evaluations.</p>
+                <h3>Discuss Secure AI Deployment</h3>
                 
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Inquiry recorded safely.');">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Request recorded safely.');">
                     <div class="field-group">
                         <div class="input-block">
                             <label for="org">Organization Name</label>
                             <input type="text" id="org" required placeholder="Medical Group / Institution">
                         </div>
                         <div class="input-block">
-                            <label for="email">Corporate Email</label>
-                            <input type="email" id="email" required placeholder="governance@institution.com">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" required placeholder="name@organization.com">
                         </div>
                     </div>
                     <div class="input-block" style="margin-bottom: 16px;">
-                        <label for="scope">Operational Scope & Constraints</label>
-                        <textarea id="scope" rows="3" required placeholder="Specify endpoint compliance constraints or localized infrastructure requirements..."></textarea>
+                        <label for="explore">What would you like to explore?</label>
+                        <textarea id="explore" rows="3" required placeholder="Pilot discussion, workflow assessment, deployment constraints, or partnership..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Initialize Pilot Alignment</button>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Request Pilot Discussion</button>
                 </form>
             </section>
         </main>
 
         <footer>
-            Sovereign Data Infrastructure &mdash; Gjallarbrú<br><br>
+            Gjallarbrú &mdash; The Trust Layer for Healthcare AI.<br><br>
             &copy; 2026 GJALLARBRÚ. All rights reserved.
         </footer>
     </div>
