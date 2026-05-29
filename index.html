@@ -69,7 +69,7 @@
         }
 
         header {
-            margin-bottom: 48px;
+            margin-bottom: 32px;
             position: relative;
         }
 
@@ -169,46 +169,27 @@
             letter-spacing: 0.05em;
         }
 
-        .system-panel {
-            background: var(--card-bg);
-            border: 1px solid rgba(76, 201, 192, 0.15);
+        /* Trust Strip Matrix */
+        .trust-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: rgba(76, 201, 192, 0.03);
+            border: 1px dashed rgba(76, 201, 192, 0.2);
             border-radius: 6px;
-            padding: 16px;
+            padding: 12px;
+            margin-bottom: 48px;
             font-family: monospace;
-            font-size: 0.8rem;
-        }
-
-        .panel-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .panel-row:last-child {
-            border-bottom: none;
-        }
-
-        .panel-label {
-            color: var(--text-muted);
-        }
-
-        .panel-value {
+            font-size: 0.72rem;
+            letter-spacing: 0.03em;
             color: var(--accent-teal);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .indicator-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-teal);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px var(--accent-teal);
-            animation: pulse 2s infinite;
+        @media(min-width: 480px) {
+            .trust-strip {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                text-align: center;
+            }
         }
 
         .section-divider {
@@ -269,7 +250,7 @@
             line-height: 1.5;
         }
 
-        /* WORKFLOW FLOW PIPELINE AREA */
+        /* PIPELINE TRACKING CONSOLE */
         .pipeline-container {
             background: #030a14;
             border: 1px solid rgba(76, 201, 192, 0.1);
@@ -298,7 +279,7 @@
             height: 120px;
             background: linear-gradient(to bottom, transparent, var(--accent-teal), transparent);
             z-index: 2;
-            animation: flowDown 6s infinite linear;
+            animation: flowDown 7s infinite linear;
         }
 
         .workflow-item {
@@ -326,10 +307,6 @@
             font-size: 0.65rem;
             color: var(--text-muted);
             flex-shrink: 0;
-        }
-
-        .workflow-text {
-            flex-grow: 1;
         }
 
         .workflow-text h5 {
@@ -363,7 +340,7 @@
             color: var(--text-muted);
         }
 
-        /* SVG INFRASTRUCTURE FLOW BLOCK */
+        /* SVG COMPONENT VISUALIZER */
         .svg-container {
             background: #02070f;
             border: 1px solid rgba(200, 169, 107, 0.1);
@@ -380,7 +357,6 @@
             height: auto;
         }
 
-        /* SVG Animation Styles */
         .svg-pulse-dot {
             animation: svgPulse 2.5s infinite ease-in-out;
         }
@@ -388,14 +364,40 @@
             stroke-dasharray: 6, 6;
             animation: dashMove 30s linear infinite;
         }
-        @keyframes dashMove {
-            to { stroke-dashoffset: -1000; }
-        }
+        @keyframes dashMove { to { stroke-dashoffset: -1000; } }
         @keyframes svgPulse {
             0%, 100% { fill: rgba(76, 201, 192, 0.4); r: 5px; }
             50% { fill: var(--accent-teal); r: 7px; filter: drop-shadow(0 0 6px var(--accent-teal)); }
         }
 
+        /* GOVERNANCE ROADMAP TIMELINE VISUAL */
+        .roadmap-timeline {
+            background: #040d1a;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .roadmap-title-row {
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-tree {
+            color: var(--text-muted);
+            line-height: 1.8;
+            padding-left: 8px;
+        }
+
+        .timeline-tree span {
+            color: var(--text-main);
+        }
+
+        /* GRID CONTROLLERS */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -405,6 +407,14 @@
         @media(min-width: 540px) {
             .grid-layout {
                 grid-template-columns: 1fr 1fr;
+            }
+            .grid-layout-triple {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(min-width: 640px) {
+            .grid-layout-triple {
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
 
@@ -425,6 +435,7 @@
             color: var(--text-main);
         }
 
+        /* FORMS & CAPTURE LAYOUTS */
         .form-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -484,11 +495,6 @@
             margin-top: 64px;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-
         @keyframes flowDown {
             0% { top: -120px; }
             100% { top: 100%; }
@@ -514,46 +520,36 @@
                 <a href="#workflow" class="btn-secondary">[ Explore Secure Workflows ]</a>
             </div>
 
-            <div class="system-panel">
-                <div class="panel-row">
-                    <span class="panel-label">Pipeline Status</span>
-                    <span class="panel-value"><span class="indicator-dot"></span> Active</span>
-                </div>
-                <div class="panel-row">
-                    <span class="panel-label">Deployment Mode</span>
-                    <span class="panel-value">Edge-First</span>
-                </div>
-                <div class="panel-row">
-                    <span class="panel-label">Redaction Engine</span>
-                    <span class="panel-value">Enabled</span>
-                </div>
-                <div class="panel-row">
-                    <span class="panel-label">Audit Logging</span>
-                    <span class="panel-value">Active</span>
-                </div>
-                <div class="panel-row">
-                    <span class="panel-label">Session Integrity</span>
-                    <span class="panel-value">Verified</span>
-                </div>
+            <div class="trust-strip">
+                <div>█ EDGE-FIRST</div>
+                <div>█ PDPA-ALIGNED</div>
+                <div>█ POLICY ROUTING</div>
+                <div>█ AUDIT LOGGING</div>
             </div>
         </header>
 
         <main>
             
+            <div class="section-divider"><span>Context</span></div>
+            <section class="premium-card" style="border-left: 2px solid var(--accent-gold); background: #02070f;">
+                <h4 style="margin-bottom: 4px; color: #ffffff;">Why the Name?</h4>
+                <p style="font-size: 0.88rem; font-style: italic;">In Norse mythology, Gjallarbrú is the guarded bridge between protected realms. Gjallarbrú serves a similar purpose in healthcare AI &mdash; acting as a trust layer between sensitive clinical workflows and externalized model infrastructure.</p>
+            </section>
+
             <div class="section-divider"><span>01 / The Problem</span></div>
             <h3 class="section-title">Healthcare workflows expose too much sensitive data.</h3>
             <section class="stack-cards">
                 <div class="premium-card">
                     <h4>Data Exposure</h4>
-                    <p>Clinical teams using AI tools may unintentionally send sensitive patient information outside secure clinic environments.</p>
+                    <p>Sensitive patient information may leave secure clinical environments during AI-assisted documentation or workflow operations.</p>
                 </div>
                 <div class="premium-card">
                     <h4>Compliance Risks</h4>
-                    <p>This creates privacy, governance, and PDPA compliance concerns across healthcare workflows.</p>
+                    <p>Privacy, operational governance, and PDPA alignment liabilities become increasingly complex across institutional boundaries.</p>
                 </div>
                 <div class="premium-card">
                     <h4>Operational Gap</h4>
-                    <p>Clinics want AI adoption without increasing unnecessary patient data exposure.</p>
+                    <p>Clinics require programmatic AI adoption pathways without increasing unnecessary underlying data exposure vectors.</p>
                 </div>
             </section>
 
@@ -562,15 +558,15 @@
             <section class="stack-cards">
                 <div class="premium-card">
                     <h4>Trust Layer</h4>
-                    <p>Gjallarbrú sits directly between your clinical workflows and external AI systems.</p>
+                    <p>Gjallarbrú sits directly between secure healthcare runtime systems and integrated AI environments.</p>
                 </div>
                 <div class="premium-card">
-                    <h4>Real-Time Protection</h4>
-                    <p>Sensitive identifiers are automatically detected, redacted, and separated before any AI processing begins.</p>
+                    <h4>Identity Protection</h4>
+                    <p>Detects, redacts, and separates core sensitive identifiers before external transmission payloads clear the perimeter.</p>
                 </div>
                 <div class="premium-card">
                     <h4>Minimum Necessary Context</h4>
-                    <p>AI systems receive only the essential clinical context required for the task &mdash; completely isolated from core personal identities.</p>
+                    <p>Downstream AI engines receive only the isolated clinical context required to execute the targeted task.</p>
                 </div>
             </section>
 
@@ -584,8 +580,8 @@
                 <div class="workflow-item">
                     <div class="node-indicator">01</div>
                     <div class="workflow-text">
-                        <h5>Check-In</h5>
-                        <p>Clinical text or requests enter the secure pipeline.</p>
+                        <h5>Clinical Workflow Check-In</h5>
+                        <p>Clinical payloads or summary requests enter the secure processing pipeline framework.</p>
                         <div class="live-data-box"><span>INPUT:</span> Patient John Doe, NRIC S9123456A presents with acute cough...</div>
                     </div>
                 </div>
@@ -593,18 +589,18 @@
                 <div class="workflow-item">
                     <div class="node-indicator">02</div>
                     <div class="workflow-text">
-                        <h5>Redaction</h5>
-                        <p>Names, IDs, and sensitive identifiers are masked automatically before processing.</p>
-                        <div class="live-data-box"><span>MASKED:</span> Patient [REDACTED_NAME], NRIC [REDACTED_VAL] presents with acute cough...</div>
+                        <h5>Identity Separation</h5>
+                        <p>Core demographic profiles are automatically parsed, isolated, and masked from volatile transaction context.</p>
+                        <div class="live-data-box"><span>SEPARATED:</span> Token_8821A &harr; Identity Matrix Isolated (Volatile memory block)</div>
                     </div>
                 </div>
 
                 <div class="workflow-item">
                     <div class="node-indicator">03</div>
                     <div class="workflow-text">
-                        <h5>Identity Separation</h5>
-                        <p>Personal identity is temporarily separated from the clinical data before AI processing begins.</p>
-                        <div class="live-data-box"><span>SECURE STORAGE:</span> Token_8821A &harr; John Doe (Volatile memory isolation)</div>
+                        <h5>Policy Engine Verification</h5>
+                        <p>Data rules filter context based on active institutional operational and governance bounds.</p>
+                        <div class="live-data-box" style="color: var(--accent-gold);"><span>POLICY:</span> Rule_Set_4 verified. No clear-text identifiers flagged.</div>
                     </div>
                 </div>
 
@@ -612,32 +608,41 @@
                     <div class="node-indicator">04</div>
                     <div class="workflow-text">
                         <h5>Secure Edge Routing</h5>
-                        <p>Cleaned clinical context is routed through approved local, edge, or connected AI environments based on deployment policy.</p>
-                        <div class="live-data-box"><span>ROUTING:</span> Outbound payload cleared for Edge-Inference Matrix.</div>
+                        <p>Scrubbed contexts route to assigned local, edge, or authorized remote host topologies.</p>
+                        <div class="live-data-box"><span>ROUTING:</span> Secure outbound stream cleared for local-first inference.</div>
                     </div>
                 </div>
 
                 <div class="workflow-item">
                     <div class="node-indicator">05</div>
                     <div class="workflow-text">
-                        <h5>Audit Trail</h5>
-                        <p>Each action is logged for real-time compliance review and institutional accountability.</p>
-                        <div class="live-data-box" style="color: var(--accent-gold);"><span>LOGGED:</span> SHA256 Block verified. Entry structural verification complete.</div>
+                        <h5>AI Processing Matrix</h5>
+                        <p>Targeted models run optimization or diagnostic transcription on identity-clean data profiles.</p>
+                        <div class="live-data-box"><span>EXECUTION:</span> Processing contextual payload... structural output parsing complete.</div>
                     </div>
                 </div>
 
                 <div class="workflow-item">
                     <div class="node-indicator">06</div>
                     <div class="workflow-text">
-                        <h5>Session Close</h5>
-                        <p>Temporary volatile session data is cleared immediately based on administrative data policy.</p>
-                        <div class="live-data-box"><span>STATUS:</span> Session cleared. 0 active lingering state elements remain.</div>
+                        <h5>Audit Logging Engine</h5>
+                        <p>Immutable ledger blocks record transactional tracking steps for continuous compliance verification.</p>
+                        <div class="live-data-box" style="color: var(--accent-gold);"><span>AUDIT:</span> Cryptographic verification block signed and logged to vault.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-item">
+                    <div class="node-indicator">07</div>
+                    <div class="workflow-text">
+                        <h5>Session Structural Close</h5>
+                        <p>Volatile connection instances clear automatically, preventing residual structural data lingering.</p>
+                        <div class="live-data-box"><span>TERMINAL:</span> State zeroed out. Session closed securely.</div>
                     </div>
                 </div>
             </section>
 
             <div class="svg-container">
-                <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M200 45 V95 M200 125 V175 M200 205 V255 M200 285 V315" stroke="rgba(76, 201, 192, 0.2)" stroke-width="2"/>
                     <path class="svg-flow-dash" d="M200 45 V95 M200 125 V175 M200 205 V255 M200 285 V315" stroke="var(--accent-teal)" stroke-width="2"/>
 
@@ -650,15 +655,15 @@
                     <circle class="svg-pulse-dot" cx="200" cy="125" r="5" fill="var(--accent-teal)"/>
 
                     <rect x="100" y="175" width="200" height="30" rx="4" fill="#07111F" stroke="var(--border-color)"/>
-                    <text x="200" y="194" fill="var(--accent-gold)" font-family="monospace" font-size="10" text-anchor="middle">SECURE EDGE ROUTING</text>
+                    <text x="200" y="194" fill="var(--accent-gold)" font-family="monospace" font-size="10" text-anchor="middle">POLICY EVALUATION ENGINE</text>
                     <circle class="svg-pulse-dot" cx="200" cy="205" r="5" fill="var(--accent-teal)"/>
 
                     <rect x="100" y="255" width="200" height="30" rx="4" fill="#07111F" stroke="rgba(255,255,255,0.1)"/>
-                    <text x="200" y="274" fill="#f8fafc" font-family="monospace" font-size="10" text-anchor="middle">AI INFRASTRUCTURE SYSTEM</text>
+                    <text x="200" y="274" fill="#f8fafc" font-family="monospace" font-size="10" text-anchor="middle">SECURE EDGE ROUTING</text>
                     <circle class="svg-pulse-dot" cx="200" cy="285" r="5" fill="var(--accent-teal)"/>
 
-                    <rect x="100" y="310" width="200" height="25" rx="4" fill="#030a14" stroke="rgba(76, 201, 192, 0.3)"/>
-                    <text x="200" y="326" fill="var(--accent-teal)" font-family="monospace" font-size="9" text-anchor="middle">REAL-TIME AUDIT LOGGING</text>
+                    <rect x="100" y="320" width="200" height="25" rx="4" fill="#030a14" stroke="rgba(76, 201, 192, 0.3)"/>
+                    <text x="200" y="336" fill="var(--accent-teal)" font-family="monospace" font-size="9" text-anchor="middle">IMMUTABLE AUDIT LOGGING</text>
                 </svg>
             </div>
 
@@ -667,55 +672,105 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: -12px; margin-bottom: 20px;">
                 Designed for local infrastructure, controlled routing, and flexible AI integration.
             </p>
-            <section class="grid-layout">
+            <section class="grid-layout-triple" style="display: grid; gap: 14px; margin-bottom: 24px;">
                 <div class="premium-card">
-                    <h4>Edge-First Deployment</h4>
-                    <p>Gjallarbrú is designed primarily for edge and local/on-prem deployment, allowing sensitive healthcare workflows to remain within clinic-controlled infrastructure.</p>
-                    <p style="margin-top: 10px; font-size: 0.85rem;">Optional private cloud or VPN-connected routing can support backup processing or approved external AI services when required.</p>
+                    <h4>Edge Infrastructure</h4>
+                    <p style="font-size: 0.85rem;">Designed for edge and local/on-prem integration, retaining sensitive healthcare data inside clinic-controlled operational zones.</p>
                 </div>
                 <div class="premium-card">
-                    <h4>Flexible AI Integration</h4>
-                    <p>Supports localized AI inference, approved external models, or private enterprise endpoints depending on operational requirements.</p>
-                    <p style="margin-top: 10px; font-size: 0.85rem;">Designed to support varying infrastructure and governance requirements across regulated healthcare environments.</p>
+                    <h4>Controlled AI Connectivity</h4>
+                    <p style="font-size: 0.85rem;">Supports localized inference or approved enterprise endpoints depending on unique governance parameters.</p>
+                </div>
+                <div class="premium-card">
+                    <h4>Regional Scalability</h4>
+                    <p style="font-size: 0.85rem;">Engineered for seamless horizontal deployment scaling across distributed clinic networks and localized healthcare clusters.</p>
                 </div>
             </section>
 
-            <div class="micro-strip">
-                <span class="strip-tag">Edge-Ready</span>
-                <span class="strip-tag">PDPA-Aligned</span>
-                <span class="strip-tag">Model Agnostic</span>
-                <span class="strip-tag">Local-First</span>
-                <span class="strip-tag">Audit-Aware</span>
-            </div>
+            <div class="section-divider"><span>05 / Governance Roadmap</span></div>
+            <h3 class="section-title">Governance &amp; Deployment Pipeline</h3>
+            <section class="roadmap-timeline">
+                <div class="roadmap-title-row">Current State Matrix:</div>
+                <div class="timeline-tree">
+                    │<br>
+                    ├── <span>Workflow Validation</span><br>
+                    ├── <span>Pilot Discussions</span><br>
+                    ├── <span>Architecture Review</span><br>
+                    ├── <span>Governance Framework Development</span><br>
+                    └── <span>Deployment Readiness</span>
+                </div>
+            </section>
 
-            <div class="section-divider"><span>05 / The Founder</span></div>
+            <div class="section-divider"><span>06 / Technical Documentation</span></div>
+            <h3 class="section-title">Architecture Overview</h3>
+            <section class="premium-card" style="border: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">A concise framework evaluation detailing the Gjallarbrú architecture, routing topology, data separation models, and edge integration parameters.</p>
+                
+                <a href="#" onclick="event.preventDefault(); alert('Architecture Document Framework Package is queuing for distribution download.');" class="btn-secondary" style="font-size: 0.75rem; padding: 8px 16px; margin-bottom: 16px;">[ Download Architecture Overview ]</a>
+                
+                <h5 style="font-family: monospace; font-size: 0.75rem; color: var(--accent-gold); margin-top: 14px; margin-bottom: 6px; text-transform: uppercase;">Whitepaper Core Contents:</h5>
+                <ul style="padding-left: 18px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                    <li>Problem Statement &amp; Healthcare Risk Horizons</li>
+                    <li>Volatile Transactional Workflow Design</li>
+                    <li>Identity Separation &amp; Tokenization Layer Models</li>
+                    <li>Edge-First Topology &amp; Physical Infrastructure Specs</li>
+                    <li>Policy Evaluation Engine Core Execution Concepts</li>
+                    <li>Governance Execution Principles</li>
+                    <li>Regional &amp; Multi-Clinic Deployment Considerations</li>
+                </ul>
+            </section>
+
+            <div class="section-divider"><span>07 / Founder Focus</span></div>
             <h3 class="section-title">Built from real-world security experience.</h3>
             <section class="premium-card">
-                <p style="margin-bottom: 12px;"><strong>Operational Perspective:</strong> Built from operational exposure to how sensitive systems, access control, and real-world data workflows behave under security constraints.</p>
-                <p><strong>Core Objective:</strong> Designed strictly to reduce unnecessary data exposure while enabling practical AI adoption safely in regulated healthcare settings.</p>
+                <p style="font-size: 0.92rem; color: var(--text-main); line-height: 1.6;">"Gjallarbrú was conceived directly from observing the operational friction between systemic AI adoption speed and rigid data protection architectures inside highly constrained, regulated deployment environments."</p>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 10px;">The platform was engineered solely to eliminate unnecessary baseline data flight risks while facilitating functional AI execution within healthcare workflows.</p>
             </section>
 
-            <div class="section-divider" id="contact"><span>06 / Contact</span></div>
+            <div class="section-divider"><span>08 / Alignment Target</span></div>
+            <h3 class="section-title">Seeking Healthcare Pilot Partners</h3>
+            <section class="grid-layout">
+                <div class="premium-card" style="background: #02070f;">
+                    <h4 style="color: #ffffff; font-size: 0.85rem;">Target Organizations</h4>
+                    <ul style="padding-left: 16px; font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; line-height: 1.6;">
+                        <li>Primary Care Clinics</li>
+                        <li>Specialist Practices</li>
+                        <li>Community Care Providers</li>
+                        <li>Healthcare Enterprise Technology Teams</li>
+                    </ul>
+                </div>
+                <div class="premium-card" style="background: #02070f;">
+                    <h4 style="color: #ffffff; font-size: 0.85rem;">Evaluation Vectors</h4>
+                    <ul style="padding-left: 16px; font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; line-height: 1.6;">
+                        <li>Clinical Documentation Workflows</li>
+                        <li>AI Operational Security Verification</li>
+                        <li>Data Governance Alignment</li>
+                        <li>Secure Localized AI Scaling Models</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="section-divider" id="contact"><span>09 / Contact Interface</span></div>
             <h3 class="section-title">Request Pilot Discussion</h3>
             <section class="form-card">
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
-                    Discuss deployment requirements, governance constraints, or pilot evaluation pathways.
+                    Discuss deployment requirements, governance considerations, workflow assessments, or pilot evaluation pathways.
                 </p>
                 
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Submission logged securely.');">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('System: Request safely recorded.');">
                     <div class="form-group-grid">
                         <div class="input-wrapper">
                             <label for="org-name">Organization Name</label>
-                            <input type="text" id="org-name" required placeholder="Medical Group / Institution">
+                            <input type="text" id="org-name" required placeholder="Medical Institution / Care Group">
                         </div>
                         <div class="input-wrapper">
                             <label for="work-email">Work Email</label>
-                            <input type="email" id="work-email" required placeholder="name@organization.com">
+                            <input type="email" id="work-email" required placeholder="name@institution.org">
                         </div>
                     </div>
                     <div class="input-wrapper" style="margin-bottom: 20px;">
                         <label for="scope">Discussion Scope</label>
-                        <textarea id="scope" rows="3" required placeholder="Outline deployment constraints, pilot targets, or partnership options..."></textarea>
+                        <textarea id="scope" rows="3" required placeholder="Outline explicit infrastructure deployment constraints, target data rules, or institutional governance parameters..."></textarea>
                     </div>
                     <button type="submit" class="btn-primary" style="width: 100%;">[ Request Pilot Discussion ]</button>
                 </form>
@@ -743,7 +798,7 @@
                 utterance.pitch = 1.0; 
                 window.speechSynthesis.speak(utterance);
             } else {
-                alert("Audio Speech synthesis is not supported on this browser.");
+                alert("Speech module not available in this frame environment.");
             }
         });
     </script>
